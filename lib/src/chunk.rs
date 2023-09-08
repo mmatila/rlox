@@ -1,16 +1,18 @@
 #[derive(Debug)]
-enum OpCode {
+pub enum OpCode {
     Return,
 }
 
 #[derive(Debug)]
 pub struct Chunk {
-    code: Vec<OpCode>,
+    pub code: Vec<OpCode>,
 }
 
 impl Chunk {
     pub fn new() -> Self {
         Self { code: Vec::new() }
     }
-    fn write(&mut self, op_code: OpCode) {}
+    pub fn write(&mut self, op_code: OpCode) {
+        self.code.push(op_code);
+    }
 }
