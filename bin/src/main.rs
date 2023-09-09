@@ -3,7 +3,9 @@ use lib::debug::disassemble_chunk;
 
 fn main() {
     let mut chunk = Chunk::new();
-    chunk.write(OpCode::Return);
+    let constant = chunk.add_constant(1.2);
+    chunk.write(OpCode::Constant(constant), 123);
+    chunk.write(OpCode::Return, 123);
 
-    disassemble_chunk(chunk, "test chunk");
+    disassemble_chunk(&chunk, "test chunk");
 }
